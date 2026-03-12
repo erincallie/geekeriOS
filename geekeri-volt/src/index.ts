@@ -1,3 +1,7 @@
+// MUST be first line — redirect all console.log to stderr
+// so VoltAgent's startup banner doesn't corrupt MCP stdio
+console.log = console.error;
+
 import "dotenv/config";
 import { readFileSync } from "fs";
 import { resolve } from "path";
