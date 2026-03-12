@@ -72,14 +72,17 @@ Edit `.env` and add your Anthropic API key:
 ANTHROPIC_API_KEY=sk-ant-api03-your-key-here
 ```
 
-### 3. Connect Claude Desktop
+### 3. Add the MCP server to Claude Desktop
 
-Open your Claude Desktop config file:
+#### 3a. Edit the config file
+
+Open Claude Desktop and navigate to **Settings → Developer → Edit Config**. This opens `claude_desktop_config.json` in your editor. If you prefer to open it manually:
 
 - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
 - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+- **Windows (MSIX/Store install):** `%LOCALAPPDATA%\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\Claude\claude_desktop_config.json`
 
-Replace or add the following (update paths to match where you cloned the repo):
+Add the `revops` MCP server. Update the paths to match where you cloned the repo and where your Node 20+ binary lives:
 
 ```json
 {
@@ -111,11 +114,73 @@ Replace or add the following (update paths to match where you cloned the repo):
 }
 ```
 
-### 4. Restart Claude Desktop
+**Windows example:**
 
-Fully quit (Cmd+Q on macOS, not just close the window) and relaunch. The MCP server starts automatically.
+```json
+{
+  "mcpServers": {
+    "revops": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "set PATH=C:\\Program Files\\nodejs\\;%PATH% && cd C:\\Users\\YOU\\geekeriOS && npx -y ruflo@latest init >nul 2>&1 & npx -y ruflo@latest daemon start >nul 2>&1 & npx tsx src/index.ts"
+      ]
+    }
+  }
+}
+```
 
-### 5. Test it
+Save the file.
+
+> **Important:** Do NOT use an external shell script file (`.sh` / `.bat`) — macOS Gatekeeper blocks downloaded scripts with "Operation not permitted" even after `chmod +x`. The inline `bash -c` approach avoids this entirely.
+
+#### 3b. Grant folder access
+
+Claude Desktop needs filesystem access to the geekeriOS directory so it can read and edit your config files (`agents.json`, `skills.json`) from the Chat tab.
+
+1. Open Claude Desktop → go to the **Chat tab**
+2. Click the **"+" button** at the bottom of the chat input
+3. Select **"Add folder"** (or look for "Choose a folder" option)
+4. Navigate to your geekeriOS project folder and select it
+5. Claude Desktop will now have read/write access to `agents.json`, `skills.json`, and all other project files
+
+This is what lets you say "Read my agents.json and add a new agent" directly in Chat.
+
+#### 3c. Verify the MCP connector
+
+1. Fully quit Claude Desktop (**Cmd+Q** on macOS, not just close the window)
+2. Relaunch Claude Desktop
+3. Open a new conversation in the **Chat tab**
+4. Click the **"+" button** at the bottom of the chat input → select **"Connectors"**
+5. You should see **"revops"** listed with a green status indicator
+6. Click on it to see the available tools — you'll see ruflo memory tools (`memory_store`, `memory_search`, etc.) plus your built-in tools (`calculate_metrics`, `format_currency`)
+
+If the connector shows red or doesn't appear:
+- Check **Settings → Developer** for connection status and log links
+- Open MCP logs at `~/Library/Logs/Claude/` (macOS) or `%APPDATA%\Claude\logs\` (Windows)
+- Look for a file named `mcp-server-revops.log` for specific errors
+- Common causes: wrong Node version (must be 20+), missing `npm install`, incorrect paths in the config
+
+#### 3d. Optional — Add web connectors for business tools
+
+The revops MCP server handles agent orchestration and memory. For connecting to business tools like your CRM, email, and calendar, add web connectors through Claude Desktop's built-in connector directory:
+
+1. Go to **Settings → Connectors**
+2. Browse the available integrations and connect the ones you use:
+   - **HubSpot** — CRM data, deals, contacts, companies
+   - **Salesforce** — pipeline, opportunities, accounts
+   - **Gmail** — email search, drafts, sending
+   - **Google Calendar** — events, scheduling, availability
+   - **Slack** — messages, channels, search
+   - **Notion** — pages, databases, knowledge bases
+   - **Google Drive** — documents, spreadsheets, presentations
+3. Click **"Connect"** for each and complete the OAuth authorization
+
+These web connectors are available in both the **Chat tab** and **Cowork tab**. They work alongside the revops MCP server — for example, you can ask the orchestrator to pull HubSpot data via the web connector and then delegate analysis to the CRM Analyst sub-agent.
+
+> **Note:** The revops MCP server (local stdio) only works in the **Chat tab**, not Cowork. Web connectors work in both. This is a [known Anthropic limitation](https://github.com/anthropics/claude-code/issues/20377).
+
+### 4. Test it
 
 In the Claude Desktop **Chat tab**, try:
 
@@ -123,7 +188,7 @@ In the Claude Desktop **Chat tab**, try:
 
 You should see the orchestrator delegate to the CRM Analyst and Data Researcher, then pass results to the Report Writer.
 
-### 6. View traces
+### 5. View traces
 
 Open **https://console.voltagent.dev** — it auto-connects to `localhost:3141` and displays the full execution trace.
 
@@ -341,4 +406,4 @@ MIT
 
 ## Acknowledgments
 
-Built by [Erin](https://github.com/erincallie) as an exploration of what's possible when you wire together open-source AI agent tools on a local machine. The agent ecosystem is early so some things work beautifully and others are still a work in progress. This project documents both.
+Built by [Erin](https://github.com/YOUR_USERNAME) as an exploration of what's possible when you wire together open-source AI agent tools on a local machine. The agent ecosystem is early — some things work beautifully, others are still marketing ahead of reality. This project documents both.
