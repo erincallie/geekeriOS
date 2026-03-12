@@ -1,0 +1,137 @@
+{
+  "agents": {
+    "coord-main": {
+      "agentId": "coord-main",
+      "agentType": "coordinator",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "sonnet"
+      },
+      "createdAt": "2026-03-11T21:56:03.430Z",
+      "domain": "research",
+      "model": "sonnet",
+      "modelRoutedBy": "explicit"
+    },
+    "agent-python": {
+      "agentId": "agent-python",
+      "agentType": "specialist",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "haiku"
+      },
+      "createdAt": "2026-03-11T21:56:06.291Z",
+      "domain": "python",
+      "model": "haiku",
+      "modelRoutedBy": "explicit"
+    },
+    "agent-go": {
+      "agentId": "agent-go",
+      "agentType": "specialist",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "haiku"
+      },
+      "createdAt": "2026-03-11T21:56:08.899Z",
+      "domain": "golang",
+      "model": "haiku",
+      "modelRoutedBy": "explicit"
+    },
+    "agent-rust": {
+      "agentId": "agent-rust",
+      "agentType": "specialist",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "haiku"
+      },
+      "createdAt": "2026-03-11T21:56:11.412Z",
+      "domain": "rust",
+      "model": "haiku",
+      "modelRoutedBy": "explicit"
+    }
+  },
+  "revops-forecaster": {
+      "agentId": "revops-forecaster",
+      "agentType": "specialist",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "sonnet",
+        "description": "Revenue Operations forecasting specialist. Monitors pipeline velocity, deal hygiene scores, CRM data quality, and GTM metrics. Surfaces weekly RevOps KPIs, flags stale deals, and identifies data gaps in HubSpot. Core agent for pipeline visibility and forecast accuracy."
+      },
+      "createdAt": "2026-03-11T22:18:00.000Z",
+      "domain": "revenue-operations",
+      "model": "sonnet",
+      "modelRoutedBy": "hive-research"
+    },
+    "gtm-automation": {
+      "agentId": "gtm-automation",
+      "agentType": "specialist",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "sonnet",
+        "description": "GTM automation architect specializing in n8n workflow design, HubSpot API integration, and marketing automation infrastructure. Designs and audits agentic workflows, manages webhook chains, and builds CRM-native automation sequences. Primary agent for technical GTM stack operations."
+      },
+      "createdAt": "2026-03-11T22:18:00.000Z",
+      "domain": "gtm-automation",
+      "model": "sonnet",
+      "modelRoutedBy": "hive-research"
+    },
+    "intel-scout": {
+      "agentId": "intel-scout",
+      "agentType": "scout",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "haiku",
+        "description": "GTM intelligence scout for rapid competitive analysis, ICP scoring, and buyer journey mapping. Performs fast-cycle research sweeps on competitors, target accounts, and market signals. Feeds intel into positioning and sales enablement workflows. Optimized for high-frequency, low-latency lookups."
+      },
+      "createdAt": "2026-03-11T22:18:00.000Z",
+      "domain": "gtm-intelligence",
+      "model": "haiku",
+      "modelRoutedBy": "hive-research"
+    },
+    "content-engine": {
+      "agentId": "content-engine",
+      "agentType": "specialist",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "sonnet",
+        "description": "AI-powered content engine operator. Manages agentic content production pipelines, prompt engineering, StoryBrand narrative frameworks, and demand gen workflows. Coordinates multi-step content generation across HubSpot CMS, LinkedIn, and email sequences. Designed for high-velocity B2B content at scale."
+      },
+      "createdAt": "2026-03-11T22:18:00.000Z",
+      "domain": "content-marketing",
+      "model": "sonnet",
+      "modelRoutedBy": "hive-research"
+    },
+    "deal-analyst": {
+      "agentId": "deal-analyst",
+      "agentType": "specialist",
+      "status": "idle",
+      "health": 1,
+      "taskCount": 0,
+      "config": {
+        "model": "opus",
+        "description": "Deal intelligence and scoping analyst. Handles complex deal scoping, pricing logic, delivery risk assessment, and sales-to-delivery handoff integrity. Core agent for DealWyzer workflows — translates discovery inputs into structured scoping outputs, identifies scope creep signals, and produces delivery-ready engagement summaries."
+      },
+      "createdAt": "2026-03-11T22:18:00.000Z",
+      "domain": "sales-intelligence",
+      "model": "opus",
+      "modelRoutedBy": "hive-research"
+    }
+  },
+  "version": "3.0.0"
+}

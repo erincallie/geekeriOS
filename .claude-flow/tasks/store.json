@@ -1,0 +1,202 @@
+{
+  "tasks": {
+    "task-1773264793191-byg8fr": {
+      "taskId": "task-1773264793191-byg8fr",
+      "type": "research",
+      "description": "Research the productivity benefits of remote work — focus on output quality, focus time, and autonomy",
+      "priority": "high",
+      "status": "completed",
+      "progress": 100,
+      "assignedTo": [
+        "agent-1773264788670-098g"
+      ],
+      "tags": [],
+      "createdAt": "2026-03-11T21:33:13.191Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    "task-1773264796069-8uz0v0": {
+      "taskId": "task-1773264796069-8uz0v0",
+      "type": "research",
+      "description": "Research the collaboration and culture challenges of remote work — isolation, async communication friction, onboarding difficulties",
+      "priority": "high",
+      "status": "completed",
+      "progress": 100,
+      "assignedTo": [
+        "agent-1773264788670-4a0q"
+      ],
+      "tags": [],
+      "createdAt": "2026-03-11T21:33:16.069Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    "task-1773264799093-7z803s": {
+      "taskId": "task-1773264799093-7z803s",
+      "type": "research",
+      "description": "Synthesize findings from the other two agents into a balanced pros/cons summary of remote work with a final recommendation",
+      "priority": "normal",
+      "status": "completed",
+      "progress": 100,
+      "assignedTo": [
+        "agent-1773264788670-eg9m"
+      ],
+      "tags": [],
+      "createdAt": "2026-03-11T21:33:19.093Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    "task-1773266174616-3qumqx": {
+      "taskId": "task-1773266174616-3qumqx",
+      "type": "research",
+      "description": "Research Python language: key strengths, weaknesses, performance benchmarks, and ideal use cases",
+      "priority": "high",
+      "status": "completed",
+      "progress": 100,
+      "assignedTo": [
+        "agent-python"
+      ],
+      "tags": [
+        "python",
+        "language-comparison"
+      ],
+      "createdAt": "2026-03-11T21:56:14.616Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    "task-1773266177704-h4ueoh": {
+      "taskId": "task-1773266177704-h4ueoh",
+      "type": "research",
+      "description": "Research Go language: key strengths, weaknesses, performance benchmarks, and ideal use cases",
+      "priority": "high",
+      "status": "completed",
+      "progress": 100,
+      "assignedTo": [
+        "agent-go"
+      ],
+      "tags": [
+        "golang",
+        "language-comparison"
+      ],
+      "createdAt": "2026-03-11T21:56:17.704Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    "task-1773266180430-w98yj9": {
+      "taskId": "task-1773266180430-w98yj9",
+      "type": "research",
+      "description": "Research Rust language: key strengths, weaknesses, performance benchmarks, and ideal use cases",
+      "priority": "high",
+      "status": "completed",
+      "progress": 100,
+      "assignedTo": [
+        "agent-rust"
+      ],
+      "tags": [
+        "rust",
+        "language-comparison"
+      ],
+      "createdAt": "2026-03-11T21:56:20.430Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    "task-1773266184887-upcjz3": {
+      "taskId": "task-1773266184887-upcjz3",
+      "type": "research",
+      "description": "Synthesize findings from all three language agents into a final comparison summary",
+      "priority": "normal",
+      "status": "completed",
+      "progress": 100,
+      "assignedTo": [
+        "coord-main"
+      ],
+      "tags": [
+        "synthesis",
+        "language-comparison"
+      ],
+      "createdAt": "2026-03-11T21:56:24.887Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    "task-1773266342702-0skl58": {
+      "taskId": "task-1773266342702-0skl58",
+      "type": "research",
+      "description": "Research Python: strengths (ecosystem, readability, ML/AI dominance), weaknesses (GIL, speed), performance benchmarks vs compiled languages, ideal use cases",
+      "priority": "high",
+      "status": "completed",
+      "progress": 100,
+      "assignedTo": [
+        "lang-specialist-1773266334988-qg5p"
+      ],
+      "tags": [
+        "python",
+        "hive-compare"
+      ],
+      "createdAt": "2026-03-11T21:59:02.703Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    "task-1773266345731-l20bg7": {
+      "taskId": "task-1773266345731-l20bg7",
+      "type": "research",
+      "description": "Research Go: strengths (concurrency model, compilation speed, simplicity), weaknesses (generics limitations, verbose error handling), performance benchmarks, ideal use cases",
+      "priority": "high",
+      "status": "completed",
+      "progress": 100,
+      "assignedTo": [
+        "lang-specialist-1773266334989-7mb5"
+      ],
+      "tags": [
+        "golang",
+        "hive-compare"
+      ],
+      "createdAt": "2026-03-11T21:59:05.731Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    "task-1773266348854-cio3ih": {
+      "taskId": "task-1773266348854-cio3ih",
+      "type": "research",
+      "description": "Research Rust: strengths (memory safety, zero-cost abstractions, fearless concurrency), weaknesses (steep learning curve, borrow checker friction), performance benchmarks, ideal use cases",
+      "priority": "high",
+      "status": "completed",
+      "progress": 100,
+      "assignedTo": [
+        "lang-specialist-1773266334991-azh4"
+      ],
+      "tags": [
+        "rust",
+        "hive-compare"
+      ],
+      "createdAt": "2026-03-11T21:59:08.854Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    "task-1773274157988-afxlca": {
+      "taskId": "task-1773274157988-afxlca",
+      "type": "research",
+      "description": "Research and compile a comprehensive skill map for RevOps professionals using Claude Code. Cover: (1) Core RevOps workflows automatable via Claude Code — CRM hygiene, pipeline reporting, forecasting, attribution modeling; (2) Key HubSpot API interactions — contacts, deals, workflows, custom objects; (3) n8n + Claude Code integration patterns for GTM automation; (4) Recommended Claude Code slash commands and project prompts tailored to RevOps; (5) Data tools — SQL, dbt, Metabase, Hex that pair well with Claude Code; (6) Skill gaps and learning paths for a RevOps architect moving into agentic workflows. Deliver a structured skills framework with proficiency tiers (foundational / practitioner / advanced).",
+      "priority": "high",
+      "status": "pending",
+      "progress": 0,
+      "assignedTo": [
+        "revops-scout-1773274145438-lwpj",
+        "revops-scout-1773274145439-k5cx",
+        "revops-scout-1773274145439-2uwt",
+        "revops-specialist-1773274148035-7jed",
+        "revops-specialist-1773274148035-cpy0"
+      ],
+      "tags": [
+        "revops",
+        "claude-code",
+        "skills",
+        "automation",
+        "hubspot",
+        "n8n"
+      ],
+      "createdAt": "2026-03-12T00:09:17.988Z",
+      "startedAt": null,
+      "completedAt": null
+    }
+  },
+  "version": "3.0.0"
+}

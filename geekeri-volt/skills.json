@@ -1,0 +1,55 @@
+{
+  "skills": [
+    {
+      "id": "pipeline-audit",
+      "name": "Pipeline Audit Methodology",
+      "description": "Framework for conducting systematic pipeline audits",
+      "appliesTo": ["CRM Analyst", "revops-orchestrator"],
+      "content": "PIPELINE AUDIT FRAMEWORK:\n1. Stage Distribution: Count deals per stage, calculate % of total pipeline value in each\n2. Velocity Analysis: Average days in each stage, compare against benchmarks (Discovery: 7-14d, Demo: 5-10d, Proposal: 7-14d, Negotiation: 10-21d)\n3. Conversion Rates: Stage-to-stage conversion, flag any below 30% as bottleneck\n4. Stale Deal Detection: Flag deals with no activity >14 days, no stage change >30 days\n5. Pipeline Coverage: Total pipeline / quota target, healthy = 3-4x coverage\n6. Deal Quality Score: Weight by stage probability (Discovery 10%, Demo 25%, Proposal 50%, Negotiation 75%, Verbal 90%)\n7. Risk Flags: Single-threaded deals, missing close dates, no next steps logged"
+    },
+    {
+      "id": "revenue-forecast",
+      "name": "Revenue Forecasting Model",
+      "description": "Weighted pipeline forecasting with historical calibration",
+      "appliesTo": ["CRM Analyst", "Strategy Advisor"],
+      "content": "REVENUE FORECASTING METHOD:\n1. Weighted Pipeline: Sum of (deal value × stage probability) for all active deals\n2. Historical Calibration: Compare weighted forecast against last 3 months actual close rates by stage — adjust probabilities if actuals differ >10%\n3. Commit vs Best Case vs Upside: Commit = deals in Negotiation+ with confirmed timeline. Best Case = Commit + high-probability Proposal deals. Upside = Best Case + qualified Discovery deals\n4. Trend Analysis: Month-over-month pipeline creation rate, average deal size trend, win rate trend\n5. Risk Adjustment: Subtract 15-20% from Best Case for deals with: no champion identified, competitor present, budget not confirmed\n6. Output: Single-number forecast with confidence interval (±range based on historical variance)"
+    },
+    {
+      "id": "tech-stack-assessment",
+      "name": "Tech Stack Assessment",
+      "description": "Framework for evaluating and recommending RevOps tool stacks",
+      "appliesTo": ["Strategy Advisor"],
+      "content": "TECH STACK ASSESSMENT FRAMEWORK:\n1. Current State Mapping: List all tools across Sales, Marketing, CS, Finance with integration status\n2. Data Flow Audit: Trace how a lead becomes a customer — every system touch, manual handoff, and data gap\n3. Integration Health: Score each integration (native/API/Zapier/manual) — manual = red flag\n4. Redundancy Check: Identify overlapping tools doing the same job\n5. Gap Analysis: Map against canonical RevOps stack (CRM, Marketing Automation, Sales Engagement, CPQ, CS Platform, BI/Analytics, Data Warehouse)\n6. ROI Scoring: For each recommended change — estimated cost, implementation time, expected efficiency gain\n7. Priority Matrix: Plot recommendations on effort vs impact 2x2"
+    },
+    {
+      "id": "client-deliverable-format",
+      "name": "Client Deliverable Standards",
+      "description": "Formatting and structure standards for all client-facing outputs",
+      "appliesTo": ["Report Writer"],
+      "content": "CLIENT DELIVERABLE STANDARDS:\n- Always start with a 3-sentence Executive Summary that a CRO can read in 30 seconds\n- Use specific numbers everywhere — never say 'significant' when you can say '34%'\n- Structure: Executive Summary → Key Findings (3-5 bullets) → Detailed Analysis → Recommendations → Next Steps\n- Each recommendation must include: What to do, Who owns it, Timeline, Expected impact\n- Use comparison framing: 'Your 28% demo-to-proposal rate is below the 40% B2B SaaS median'\n- End with exactly 3 prioritized next steps with deadlines\n- Tone: Confident, direct, advisory — like a partner at McKinsey, not a vendor"
+    },
+    {
+      "id": "data-quality-check",
+      "name": "CRM Data Quality Checklist",
+      "description": "Standard checks for CRM data hygiene",
+      "appliesTo": ["CRM Analyst"],
+      "content": "DATA QUALITY CHECKLIST:\n1. Completeness: % of deals missing close date, amount, stage, owner, contact\n2. Freshness: % of contacts with no activity logged in 90+ days\n3. Duplicates: Flag contacts/companies appearing multiple times\n4. Stage Integrity: Deals that skipped stages or went backward without explanation\n5. Owner Balance: Deals per rep — flag >2 standard deviations from mean\n6. Amount Accuracy: Deals with $0 or suspiciously round numbers ($100,000 exactly)\n7. Activity Coverage: % of open deals with at least 1 logged activity in last 14 days\n8. Scoring: Grade overall hygiene A-F, benchmark against: A(>90%), B(75-90%), C(60-75%), D(<60%)"
+    }
+  ],
+  "tools": [
+    {
+      "id": "calculate-metrics",
+      "name": "calculate_metrics",
+      "description": "Calculate common RevOps metrics from provided numbers",
+      "appliesTo": ["CRM Analyst", "revops-orchestrator"],
+      "enabled": true
+    },
+    {
+      "id": "format-currency",
+      "name": "format_currency",
+      "description": "Format numbers as currency with proper notation (K, M, B)",
+      "appliesTo": ["Report Writer", "CRM Analyst"],
+      "enabled": true
+    }
+  ]
+}
