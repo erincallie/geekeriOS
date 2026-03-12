@@ -118,7 +118,7 @@ The startup chain does four things in order: forces Node 20 onto the PATH, initi
 }
 ```
 
-**Windows example (cmd):**
+**Windows example:**
 
 On Windows, use `cmd /c` with `&&` chaining. Adjust paths to match your Node 20+ install location and where you cloned the repo:
 
@@ -137,24 +137,6 @@ On Windows, use `cmd /c` with `&&` chaining. Adjust paths to match your Node 20+
 ```
 
 If you installed Node 20+ system-wide (not via nvm-windows), replace the `set PATH=...` portion with your Node install path, e.g. `set PATH=C:\\Program Files\\nodejs\\;%PATH%`.
-
-**Windows example (PowerShell):**
-
-If you prefer PowerShell:
-
-```json
-{
-  "mcpServers": {
-    "geekeriOS": {
-      "command": "powershell",
-      "args": [
-        "-Command",
-        "$env:PATH = 'C:\\Users\\YOU\\.nvm\\versions\\node\\v20.19.6;' + $env:PATH; cd C:\\Users\\YOU\\Desktop\\geekeriOS; npx -y ruflo@latest init 2>$null; npx -y ruflo@latest daemon start 2>$null; cd geekeri-volt; npx tsx src/index.ts"
-      ]
-    }
-  }
-}
-```
 
 Save the file.
 
