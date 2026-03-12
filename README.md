@@ -56,11 +56,13 @@ nvm use 20
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/geekeriOS.git
-cd geekeriOS
+cd geekeriOS/geekeri-volt
 npm install
 ```
 
 ### 2. Configure your API key
+
+From inside the `geekeri-volt/` directory:
 
 ```bash
 cp .env.example .env
@@ -82,48 +84,72 @@ Open Claude Desktop and navigate to **Settings → Developer → Edit Config**. 
 - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
 - **Windows (MSIX/Store install):** `%LOCALAPPDATA%\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\Claude\claude_desktop_config.json`
 
-Add the `revops` MCP server. Update the paths to match where you cloned the repo and where your Node 20+ binary lives:
+Add the `geekeriOS` MCP server. Update the paths to match where you cloned the repo and where your Node 20+ binary lives:
 
 ```json
 {
   "mcpServers": {
-    "revops": {
+    "geekeriOS": {
       "command": "bash",
       "args": [
         "-c",
-        "export PATH=/PATH/TO/NODE20/bin:$PATH; cd /PATH/TO/geekeriOS; npx -y ruflo@latest init >/dev/null 2>&1 || true; npx -y ruflo@latest daemon start >/dev/null 2>&1 || true; exec npx tsx src/index.ts"
+        "export PATH=/PATH/TO/NODE20/bin:$PATH; cd /PATH/TO/geekeriOS; npx -y ruflo@latest init >/dev/null 2>&1 || true; npx -y ruflo@latest daemon start >/dev/null 2>&1 || true; cd geekeri-volt; exec npx tsx src/index.ts"
       ]
     }
   }
 }
 ```
+
+The startup chain does four things in order: forces Node 20 onto the PATH, initializes ruflo in the project root (silent), starts the ruflo daemon (silent), then `cd`s into the `geekeri-volt/` subfolder where VoltAgent lives and launches the MCP server.
 
 **macOS with nvm example:**
 
 ```json
 {
   "mcpServers": {
-    "revops": {
+    "geekeriOS": {
       "command": "bash",
       "args": [
         "-c",
-        "export PATH=$HOME/.nvm/versions/node/v20.19.6/bin:$PATH; cd $HOME/Desktop/geekeriOS; npx -y ruflo@latest init >/dev/null 2>&1 || true; npx -y ruflo@latest daemon start >/dev/null 2>&1 || true; exec npx tsx src/index.ts"
+        "export PATH=$HOME/.nvm/versions/node/v20.19.6/bin:$PATH; cd $HOME/Desktop/geekeriOS; npx -y ruflo@latest init >/dev/null 2>&1 || true; npx -y ruflo@latest daemon start >/dev/null 2>&1 || true; cd geekeri-volt; exec npx tsx src/index.ts"
       ]
     }
   }
 }
 ```
 
-**Windows example:**
+**Windows example (cmd):**
+
+On Windows, use `cmd /c` with `&&` chaining. Adjust paths to match your Node 20+ install location and where you cloned the repo:
 
 ```json
 {
   "mcpServers": {
-    "revops": {
+    "geekeriOS": {
       "command": "cmd",
       "args": [
         "/c",
-        "set PATH=C:\\Program Files\\nodejs\\;%PATH% && cd C:\\Users\\YOU\\geekeriOS && npx -y ruflo@latest init >nul 2>&1 & npx -y ruflo@latest daemon start >nul 2>&1 & npx tsx src/index.ts"
+        "set PATH=C:\\Users\\YOU\\.nvm\\versions\\node\\v20.19.6;%PATH% && cd /d C:\\Users\\YOU\\Desktop\\geekeriOS && npx -y ruflo@latest init >nul 2>&1 & npx -y ruflo@latest daemon start >nul 2>&1 & cd geekeri-volt && npx tsx src/index.ts"
+      ]
+    }
+  }
+}
+```
+
+If you installed Node 20+ system-wide (not via nvm-windows), replace the `set PATH=...` portion with your Node install path, e.g. `set PATH=C:\\Program Files\\nodejs\\;%PATH%`.
+
+**Windows example (PowerShell):**
+
+If you prefer PowerShell:
+
+```json
+{
+  "mcpServers": {
+    "geekeriOS": {
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "$env:PATH = 'C:\\Users\\YOU\\.nvm\\versions\\node\\v20.19.6;' + $env:PATH; cd C:\\Users\\YOU\\Desktop\\geekeriOS; npx -y ruflo@latest init 2>$null; npx -y ruflo@latest daemon start 2>$null; cd geekeri-volt; npx tsx src/index.ts"
       ]
     }
   }
@@ -152,18 +178,18 @@ This is what lets you say "Read my agents.json and add a new agent" directly in 
 2. Relaunch Claude Desktop
 3. Open a new conversation in the **Chat tab**
 4. Click the **"+" button** at the bottom of the chat input → select **"Connectors"**
-5. You should see **"revops"** listed with a green status indicator
+5. You should see **"geekeriOS"** listed with a green status indicator
 6. Click on it to see the available tools — you'll see ruflo memory tools (`memory_store`, `memory_search`, etc.) plus your built-in tools (`calculate_metrics`, `format_currency`)
 
 If the connector shows red or doesn't appear:
 - Check **Settings → Developer** for connection status and log links
 - Open MCP logs at `~/Library/Logs/Claude/` (macOS) or `%APPDATA%\Claude\logs\` (Windows)
-- Look for a file named `mcp-server-revops.log` for specific errors
+- Look for a file named `mcp-server-geekeriOS.log` for specific errors
 - Common causes: wrong Node version (must be 20+), missing `npm install`, incorrect paths in the config
 
 #### 3d. Optional — Add web connectors for business tools
 
-The revops MCP server handles agent orchestration and memory. For connecting to business tools like your CRM, email, and calendar, add web connectors through Claude Desktop's built-in connector directory:
+The geekeriOS MCP server handles agent orchestration and memory. For connecting to business tools like your CRM, email, and calendar, add web connectors through Claude Desktop's built-in connector directory:
 
 1. Go to **Settings → Connectors**
 2. Browse the available integrations and connect the ones you use:
@@ -176,9 +202,9 @@ The revops MCP server handles agent orchestration and memory. For connecting to 
    - **Google Drive** — documents, spreadsheets, presentations
 3. Click **"Connect"** for each and complete the OAuth authorization
 
-These web connectors are available in both the **Chat tab** and **Cowork tab**. They work alongside the revops MCP server — for example, you can ask the orchestrator to pull HubSpot data via the web connector and then delegate analysis to the CRM Analyst sub-agent.
+These web connectors are available in both the **Chat tab** and **Cowork tab**. They work alongside the geekeriOS MCP server — for example, you can ask the orchestrator to pull HubSpot data via the web connector and then delegate analysis to the CRM Analyst sub-agent.
 
-> **Note:** The revops MCP server (local stdio) only works in the **Chat tab**, not Cowork. Web connectors work in both. This is a [known Anthropic limitation](https://github.com/anthropics/claude-code/issues/20377).
+> **Note:** The geekeriOS MCP server (local stdio) only works in the **Chat tab**, not Cowork. Web connectors work in both. This is a [known Anthropic limitation](https://github.com/anthropics/claude-code/issues/20377).
 
 ### 4. Test it
 
@@ -198,15 +224,26 @@ Open **https://console.voltagent.dev** — it auto-connects to `localhost:3141` 
 
 ```
 geekeriOS/
-├── agents.json          ← Agent definitions (edit via Claude Desktop Chat)
-├── skills.json          ← Skills + tool assignments (edit via Claude Desktop Chat)
-├── .env                 ← API keys (not committed)
-├── .env.example         ← Template for .env
-├── package.json         ← Dependencies
-├── tsconfig.json        ← TypeScript config
-└── src/
-    └── index.ts         ← Entry point — loads configs, builds agents, starts server
+├── ruflo.config.json        ← ruflo configuration
+├── memory.db                ← ruflo vector memory (sql.js, auto-created)
+├── .claude-flow/            ← ruflo daemon state
+├── geekeri-volt/            ← VoltAgent project (MCP server lives here)
+│   ├── agents.json          ← Agent definitions (edit via Claude Desktop Chat)
+│   ├── skills.json          ← Skills + tool assignments (edit via Claude Desktop Chat)
+│   ├── .env                 ← API keys (not committed)
+│   ├── .env.example         ← Template for .env
+│   ├── package.json         ← Dependencies
+│   ├── tsconfig.json        ← TypeScript config
+│   ├── .voltagent/          ← Observability DB (auto-created)
+│   │   └── observability.db ← LibSQL trace persistence
+│   └── src/
+│       └── index.ts         ← Entry point — loads configs, builds agents, starts server
+├── clients/                 ← Client engagement files
+├── skills/                  ← Skill reference materials
+└── work/                    ← Working documents
 ```
+
+The startup chain `cd`s into `geekeriOS/` first (for ruflo init), then into `geekeri-volt/` (for VoltAgent). Config file edits (`agents.json`, `skills.json`) happen inside `geekeri-volt/`.
 
 ---
 
@@ -353,6 +390,7 @@ Get keys at [console.voltagent.dev/tracing-setup](https://console.voltagent.dev/
 You can run the platform standalone and interact via VoltOps Console:
 
 ```bash
+cd geekeri-volt
 npm run dev
 ```
 
