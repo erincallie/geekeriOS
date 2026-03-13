@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.geekerios.token-keepalive</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>bash</string>
+        <string>-c</string>
+        <string>export PATH=/Users/erin/.nvm/versions/node/v20.19.6/bin:$PATH; cd /Users/erin/Desktop/geekeriOS/briefing-runner; npx tsx src/keepalive.ts 2>&amp;1 >> /Users/erin/Desktop/geekeriOS/briefing-runner/logs/keepalive.log</string>
+    </array>
+
+    <!-- Runs EVERY day at 12:00 PM MT, including weekends -->
+    <!-- This keeps the Google refresh token alive during vacations -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>12</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/erin</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/erin/Desktop/geekeriOS/briefing-runner</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/erin/Desktop/geekeriOS/briefing-runner/logs/keepalive-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/erin/Desktop/geekeriOS/briefing-runner/logs/keepalive-stderr.log</string>
+</dict>
+</plist>

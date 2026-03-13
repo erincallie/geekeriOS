@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.geekerios.meeting-prep</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>bash</string>
+        <string>-c</string>
+        <string>export PATH=/Users/erin/.nvm/versions/node/v20.19.6/bin:$PATH; cd /Users/erin/Desktop/geekeriOS/briefing-runner; npx tsx src/meeting-prep.ts 2>&amp;1 >> /Users/erin/Desktop/geekeriOS/briefing-runner/logs/meeting-prep.log</string>
+    </array>
+
+    <!-- Run every 30 minutes during work hours (8am-6pm, Mon-Fri) -->
+    <!-- launchd doesn't support "every 30 min only during hours X-Y" natively, -->
+    <!-- so we use StartInterval and let the script exit quickly if no meetings -->
+    <key>StartInterval</key>
+    <integer>1800</integer>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/erin</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/erin/Desktop/geekeriOS/briefing-runner</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/erin/Desktop/geekeriOS/briefing-runner/logs/meeting-prep-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/erin/Desktop/geekeriOS/briefing-runner/logs/meeting-prep-stderr.log</string>
+</dict>
+</plist>

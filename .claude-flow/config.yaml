@@ -39,5 +39,5 @@ hooks:
   autoExecute: true
 
 mcp:
-  autoStart: false
+  autoStart: true
   port: 3000

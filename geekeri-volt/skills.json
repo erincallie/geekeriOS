@@ -50,6 +50,54 @@
       "description": "Format numbers as currency with proper notation (K, M, B)",
       "appliesTo": ["Report Writer", "CRM Analyst"],
       "enabled": true
+    },
+    {
+      "id": "ruflo-memory-store",
+      "name": "memory_store",
+      "description": "Store key-value data in persistent cross-session memory. Use to save findings, frameworks, client patterns, and reusable insights.",
+      "appliesTo": ["revops-orchestrator", "CRM Analyst", "Strategy Advisor", "Customer Success Analyst", "Report Writer"],
+      "enabled": true,
+      "source": "ruflo"
+    },
+    {
+      "id": "ruflo-memory-retrieve",
+      "name": "memory_retrieve",
+      "description": "Retrieve a specific key from persistent memory by exact key name.",
+      "appliesTo": ["revops-orchestrator", "CRM Analyst", "Strategy Advisor", "Customer Success Analyst", "Report Writer"],
+      "enabled": true,
+      "source": "ruflo"
+    },
+    {
+      "id": "ruflo-memory-search",
+      "name": "memory_search",
+      "description": "Search persistent memory using semantic/vector search. Find past patterns, learnings, and stored analysis by topic.",
+      "appliesTo": ["revops-orchestrator", "CRM Analyst", "Strategy Advisor", "Customer Success Analyst", "Data Researcher"],
+      "enabled": true,
+      "source": "ruflo"
+    },
+    {
+      "id": "ruflo-memory-list",
+      "name": "memory_list",
+      "description": "List all stored keys in memory. Useful for reviewing what has been saved across sessions.",
+      "appliesTo": ["revops-orchestrator"],
+      "enabled": true,
+      "source": "ruflo"
+    },
+    {
+      "id": "ruflo-session-start",
+      "name": "hooks_session-start",
+      "description": "Begin a tracked ruflo session for cross-session memory context.",
+      "appliesTo": ["revops-orchestrator"],
+      "enabled": true,
+      "source": "ruflo"
+    },
+    {
+      "id": "ruflo-session-end",
+      "name": "hooks_session-end",
+      "description": "End the current ruflo session.",
+      "appliesTo": ["revops-orchestrator"],
+      "enabled": true,
+      "source": "ruflo"
     }
   ]
 }

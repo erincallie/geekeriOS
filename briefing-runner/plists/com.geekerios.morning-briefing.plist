@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.geekerios.morning-briefing</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>bash</string>
+        <string>-c</string>
+        <string>export PATH=/Users/erin/.nvm/versions/node/v20.19.6/bin:$PATH; cd /Users/erin/Desktop/geekeriOS/briefing-runner; npx tsx src/runner.ts morning 2>&amp;1 >> /Users/erin/Desktop/geekeriOS/briefing-runner/logs/morning.log</string>
+    </array>
+
+    <!-- 7:00 AM, Monday–Friday (uses system timezone = America/Denver) -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Weekday</key><integer>1</integer>
+            <key>Hour</key><integer>7</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key><integer>2</integer>
+            <key>Hour</key><integer>7</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key><integer>3</integer>
+            <key>Hour</key><integer>7</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key><integer>4</integer>
+            <key>Hour</key><integer>7</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key><integer>5</integer>
+            <key>Hour</key><integer>7</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/erin</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/erin/Desktop/geekeriOS/briefing-runner</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/erin/Desktop/geekeriOS/briefing-runner/logs/morning-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/erin/Desktop/geekeriOS/briefing-runner/logs/morning-stderr.log</string>
+</dict>
+</plist>
